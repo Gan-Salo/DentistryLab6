@@ -8,8 +8,7 @@ namespace DentistryLab6
     {
 		string title;       //Название должности
 		string podrazdel;   //Подразделение, к которому относится должность	
-		public Dolznost() { }      //Конструктор без параметров
-
+		
 		public string Title
 		{
 			get => title;
@@ -29,7 +28,8 @@ namespace DentistryLab6
 					throw new ArgumentNullException("Вы ввели пустую строку. Проверьте введенные данные для подразделения должности");
 				else { podrazdel = value; }
 			}
-		}
+		}		
+		public Dolznost() { }      //Конструктор без параметров
 		public Dolznost(string Title, string Podrazdel) //Конструктор с параметрами
 		{
 			this.Title = Title;
@@ -44,10 +44,7 @@ namespace DentistryLab6
 		}
 		public void output()   //Функция вывода
 		{
-			Console.WriteLine("Название должности: ");
-			Console.WriteLine(this.Title);
-			Console.WriteLine("Подразделение для должности: ");
-			Console.WriteLine(this.Podrazdel);
+			Console.WriteLine("Название должности: " + this.Title + "; Подразделение для должности: " + this.Podrazdel);
 		}
 	}
 }

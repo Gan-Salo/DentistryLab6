@@ -9,8 +9,8 @@ namespace DentistryLab6
         {
             Console.WriteLine("Hello World!");
 
-            Dolznost test_cab = new Dolznost();
-            //test_cab.input();
+            Zapis test_cab = new Zapis();
+            test_cab.input();
             
             test_cab.output();
         }
