@@ -9,8 +9,9 @@ namespace DentistryLab6
         {
             Console.WriteLine("Hello World!");
 
-            Cabinet test_cab = new Cabinet(-12, "wdwd", 333);
+            Dolznost test_cab = new Dolznost();
             //test_cab.input();
+            
             test_cab.output();
         }
     }
