@@ -16,7 +16,7 @@ namespace DentistryLab6
             do
             {
                 Console.Clear();
-                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n\nESC - выход");
+                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n\nESC - выход");
                 mainmenu = Console.ReadKey().KeyChar;
 
                 switch (mainmenu)
@@ -93,10 +93,25 @@ namespace DentistryLab6
                             {                              
                                 pat_mass[i].output();
                             }
+                            Console.ReadKey(true); 
+                            break;
+                        }
+
+                    case 52:
+                        {
+                            Console.Clear();
+                            int Areas;
+                            Cabinet cab3 = new Cabinet(203, "dd", 21);                            
+                            cab3.fullarea(out Areas);                          
+                            Console.WriteLine("\nОбщая площадь (out): " + Areas);
+
+                            int Costs = 0;
+                            Usluga usl3 = new Usluga("dsd", 210);                           
+                            usl3.fullcost(ref Costs);
+                            Console.WriteLine("\nОбщая стоимость (ref): " + Costs);
                             Console.ReadKey(true);
                         }
                         break;
-
                 }
 
             } while (mainmenu != 27);

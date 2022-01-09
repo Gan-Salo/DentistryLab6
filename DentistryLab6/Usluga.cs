@@ -14,8 +14,18 @@ namespace DentistryLab6
 			set
 			{
 				if (String.IsNullOrEmpty(value))
-					throw new ArgumentNullException("Вы ввели пустую строку. Проверьте введенные данные для названия услуги");
-				else { title = value; }
+				{
+					try
+					{
+						throw new Exception("Некорректное значение.");
+					}
+					catch (Exception e)
+					{
+						Console.WriteLine(e.Message);
+					}
+
+				}
+				else { title = value; }				
 			}
 		}
 		public int Cost
@@ -24,26 +34,39 @@ namespace DentistryLab6
 			set
 			{
 				if (value < 0)
-					throw new ArgumentOutOfRangeException("Ошибка. Данное значение не подходит для описания цены услуги.");
+				{
+					try
+					{
+						throw new Exception("Некорректное значение.");
+					}
+					catch (Exception e)
+					{
+						Console.WriteLine(e.Message);
+					}
+				}
 				else { cost = value; }
 			}
 		}
 		public Usluga() { }      //Конструктор без параметров
 		public Usluga(string title, int cost) //Конструктор с параметрами
 		{
-			this.title = Title;
-			this.cost = Cost;
+			this.title = title;
+			this.cost = cost;
 		}
 		public void input()     //Функция ввода
 		{
 			Console.WriteLine("Введите название услуги: ");
-			Title = Console.ReadLine();
+			title = Console.ReadLine();
 			Console.WriteLine("Введите стоимость услуги: ");
-			Cost = Convert.ToInt32(Console.ReadLine());
+			cost = Convert.ToInt32(Console.ReadLine());
 		}
 		public void output()   //Функция вывода
 		{
 			Console.WriteLine("Название услуги: " + Title + "; Стоимость услуги: " + Cost);
+		}
+		public void fullcost(ref int Costs)
+		{			
+			Costs = Costs + this.cost;
 		}
 	}
 }

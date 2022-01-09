@@ -86,7 +86,6 @@ namespace DentistryLab6
 		public void input()     //Функция ввода
 		{
 			
-
 			do
 			{				
 				Console.WriteLine("Введите ФИО пациента: ");

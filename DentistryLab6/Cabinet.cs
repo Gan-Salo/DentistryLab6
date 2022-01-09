@@ -19,7 +19,7 @@ namespace DentistryLab6
                 {
                     try
                     {
-                        throw new Exception("Данное значение не подходит для описания номера кабинета");
+                        throw new Exception("Некорректное значение.");
                     }
                     catch(Exception e)
                     {
@@ -58,7 +58,7 @@ namespace DentistryLab6
                 {
                     try
                     {
-                        throw new Exception("Данное значение не подходит для описания площади кабинета");
+                        throw new Exception("Некорректное значение.");
                     }
                     catch (Exception e)
                     {
@@ -144,6 +144,11 @@ namespace DentistryLab6
             Console.WriteLine("Номер кабинета: " + number + "; Отделение: " + otdelen + "; Площадь кабинета: " + area);
         }  
         
+        public void fullarea(out int Areas)
+        {         
+            Areas = 0;
+            Areas = this.area;
+        }
     }
  
 }
