@@ -16,7 +16,16 @@ namespace DentistryLab6
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Ошибка. Данное значение не подходит для описания номера кабинета.");
+                {
+                    try
+                    {
+                        throw new Exception("Данное значение не подходит для описания номера кабинета");
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }                
+                }
                 else { number = value; }
             }
         }
@@ -26,7 +35,17 @@ namespace DentistryLab6
             set
             {
                 if (String.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Вы ввели пустую строку. Проверьте введенные данные для названия отделения кабинета.");
+                {
+                    try
+                    {
+                        throw new Exception("Некорректное значение.");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+
+                }
                 else { otdelen = value; }
             }
         }
@@ -36,32 +55,93 @@ namespace DentistryLab6
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Ошибка. Данное значение не подходит для описания площади кабинета.");
+                {
+                    try
+                    {
+                        throw new Exception("Данное значение не подходит для описания площади кабинета");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
                 else { area = value; }
             }
         }
         public Cabinet()    //Конструктор без параметров
-        { }
+        { 
+        
+        }
 
         public Cabinet(int number, string otdelen, int area)    //Конструктор с параметрами
         {
-            this.number = Number;
-            this.otdelen = Otdelen;
-            this.area = Area;
-        }  
-        
+            this.number = number;
+            this.otdelen = otdelen;
+            this.area = area;
+        }
+
         public void input()     //Функция ввода
-        {           
-            Console.WriteLine("Введите номер кабинета: ");
-            Number = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите отделение: ");
-            Otdelen = Console.ReadLine();
-            Console.WriteLine("Введите площадь кабинета: ");
-            Area = Convert.ToInt32(Console.ReadLine());            
+        {
+
+            do
+            {
+                Console.WriteLine("Введите номер кабинета: ");
+                try
+                {
+                    number = Convert.ToInt32(Console.ReadLine());
+                    if (number < 0)
+                    {
+                        throw new Exception("Данное значение не подходит для описания номера кабинета");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    number = -1;
+                }
+
+            } while (number == -1);
+
+            do
+            {
+                Console.WriteLine("Введите отделение: ");              
+                try
+                { 
+                    otdelen = Console.ReadLine();
+                    if (String.IsNullOrEmpty(otdelen))
+                    {                    
+                        throw new Exception("Вы ввели пустую строку.");
+                    }                                      
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                } 
+
+            } while (otdelen == "");
+
+            do
+            {
+                Console.WriteLine("Введите площадь кабинета: ");          
+                try
+                {
+                    area = Convert.ToInt32(Console.ReadLine());
+                    if (area < 0)
+                    {
+                        throw new Exception("Данное значение не подходит для описания площади кабинета");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    area = -1;
+                }
+
+            } while (area == -1);
         }
         public void output()   //Функция вывода
         {           
-            Console.WriteLine("Номер кабинета: " + Number + "; Отделение: " + Otdelen + "; Площадь кабинета: " + Area);
+            Console.WriteLine("Номер кабинета: " + number + "; Отделение: " + otdelen + "; Площадь кабинета: " + area);
         }  
         
     }
