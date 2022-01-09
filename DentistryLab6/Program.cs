@@ -11,12 +11,12 @@ namespace DentistryLab6
 
             Patient pat = new Patient();
             Cabinet cab = new Cabinet(12, "2323", 222);
-            int mainmenu, extramenu;
+            int mainmenu, extramenu, opmenu;
 
             do
             {
                 Console.Clear();
-                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n\nESC - выход");
+                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n5) Перегрузка оператора '+'\n\nESC - выход");
                 mainmenu = Console.ReadKey().KeyChar;
 
                 switch (mainmenu)
@@ -45,7 +45,7 @@ namespace DentistryLab6
                                
                             }
                             cab.output();                            
-                            Console.WriteLine("\n\nНажмите любую клавишу для возврата в меню.");
+                            Console.WriteLine("\nНажмите любую клавишу для возврата в меню.");
                             Console.ReadKey(true);
                             break;
                         }
@@ -62,7 +62,7 @@ namespace DentistryLab6
                             pat2.output();
                             pat2 = pat1;
                             pat1.output();
-                            Console.WriteLine("\n\nНажмите любую клавишу для возврата в меню.");
+                            Console.WriteLine("\nНажмите любую клавишу для возврата в меню.");
                             Console.ReadKey(true);
                             break;
                         }
@@ -110,7 +110,68 @@ namespace DentistryLab6
                             usl3.fullcost(ref Costs);
                             Console.WriteLine("\nОбщая стоимость (ref): " + Costs);
                             Console.ReadKey(true);
+                            break;
                         }
+
+                    case 53:
+                        {
+                            Console.Clear();
+                            do
+                            {
+                                Console.Clear();
+                                Console.WriteLine("1) Оператор сложения\n2) Префиксный оператор\n3) Постфиксный оператор\n");
+                                opmenu = Console.ReadKey().KeyChar;
+                                Console.WriteLine("\n");
+                            } while (opmenu < '1' && opmenu > '3');
+
+                            if (opmenu == '1')
+                            {
+                                Console.Clear();
+                                Usluga usl1 = new Usluga("fisrt", 2100);
+                                Usluga usl2 = new Usluga("second", 1500);
+                                Usluga usl3 = new Usluga("third");
+                                Console.WriteLine("\nПервая услуга: ");
+                                usl1.output();
+                                Console.WriteLine("\nВторая услуга: ");
+                                usl2.output();
+                                usl3 = usl1 + usl2;
+                                Console.WriteLine("\nТретья услуга: ");
+                                usl3.output();
+                                Console.ReadKey(true);
+                            }
+                            else if (opmenu == '2')
+                            {
+                                Console.Clear();
+                                Usluga usl1 = new Usluga("fisrt", 2100);
+                                Usluga usl2 = new Usluga("second");                              
+                                Console.WriteLine("\nПервая услуга до: ");
+                                usl1.output();                                                             
+                                usl2 = usl1++;
+                                Console.WriteLine("\nПервая услуга после: ");
+                                usl1.output();
+                                Console.WriteLine("\nВторая услуга после: ");
+                                usl2.output();
+                                Console.ReadKey(true);
+                            }
+                            else if (opmenu == '3')
+                            {
+                                Console.Clear();
+                                Usluga usl1 = new Usluga("fisrt", 2100);
+                                Usluga usl2 = new Usluga("second");
+                                Console.WriteLine("\nПервая услуга до: ");
+                                usl1.output();                               
+                                usl2 = ++usl1;
+                                Console.WriteLine("\nПервая услуга после: ");
+                                usl1.output();
+                                Console.WriteLine("\nВторая услуга после: ");
+                                usl2.output();
+                                Console.ReadKey(true);
+
+                            }
+                            
+                            Console.WriteLine("\nНажмите любую клавишу для возврата в меню.");
+                            Console.ReadKey(true);                          
+                        }              
                         break;
                 }
 
