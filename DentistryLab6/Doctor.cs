@@ -48,6 +48,11 @@ namespace DentistryLab6
 
 		public Doctor() { }      //Конструктор без параметров
 
+		public Doctor(string fio) //Конструктор с одним параметром
+		{ 
+			this.fio = fio; 
+		}      
+
 		public Doctor(string fio, int age, string phone, Dolznost dolznost, string kategory)
 		{
 			this.fio = fio;

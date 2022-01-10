@@ -13,22 +13,7 @@ namespace DentistryLab6
 			get => title;
 			set
 			{
-				if (String.IsNullOrEmpty(value))
-				{
-					try
-					{
-						if (String.IsNullOrEmpty(value))
-						{
-							throw new Exception("Некорректное значение.");							
-						}
-					}
-					catch (Exception e)
-					{
-						Console.WriteLine(e.Message);
-					}
-
-				}
-				else { title = value; }				
+				title = value; 				
 			}
 		}
 		public int Cost

@@ -39,6 +39,11 @@ namespace DentistryLab6
         
         }
 
+        public Cabinet(int number)  //Конструктор с одним параметром
+        {
+            this.number = number;           
+        }
+
         public Cabinet(int number, string otdelen, int area)    //Конструктор с параметрами
         {
             this.number = number;
@@ -48,7 +53,6 @@ namespace DentistryLab6
 
         public void input()     //Функция ввода
         {
-
             do
             {
                 Console.WriteLine("Введите номер кабинета: ");

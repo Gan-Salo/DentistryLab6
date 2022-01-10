@@ -35,14 +35,17 @@ namespace DentistryLab6
 			{
 				phone = value; 
 			}
-
 		}
-
-		//static Patient[] pat_massiv;
-		public Patient()
+		
+		public Patient()	//Конструктор без параметров
 		{
 			counter++;
-		}      //Конструктор без параметров
+		}
+		public Patient(string fio) //Конструктор с одним параметром
+		{
+			this.fio = fio;
+			counter++;
+		}
 		public Patient(string fio, int age, string phone) //Конструктор с параметрами
 		{
 			this.fio = fio;

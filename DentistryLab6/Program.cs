@@ -16,13 +16,14 @@ namespace DentistryLab6
             do
             {
                 Console.Clear();
-                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n5) Перегрузка операторов\n6) Обработка строк\n7) Статические поле и метод\nESC - выход");
+                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n5) Перегрузка операторов\n6) Обработка строк\n7) Статические поле и метод\n8) Массив пациентов с одним параметром\nESC - выход");
                 mainmenu = Console.ReadKey().KeyChar;
 
                 switch (mainmenu)
                 {
                     case 49:
                         {
+                            /*Демонстрация работы с объектами класса, при ручном вводе предусмотрены защиты*/
                             Console.Clear();
                             do
                             {
@@ -68,6 +69,7 @@ namespace DentistryLab6
 
                     case 51:
                         {
+                            /*Работа с массивом объектов*/
                             Console.Clear();
                             Console.Write("Введите количество пациентов для создания массива: ");
                             int n;
@@ -114,6 +116,7 @@ namespace DentistryLab6
 
                     case 53:
                         {
+                            /*Перегрузка операторов*/
                             Console.Clear();
                             do
                             {
@@ -123,6 +126,7 @@ namespace DentistryLab6
                                 Console.WriteLine("\n");
                             } while (opmenu < '1' && opmenu > '3');
 
+                            /*Оператор сложения - складывает стоимость услуг*/
                             if (opmenu == '1')
                             {
                                 Console.Clear();
@@ -138,6 +142,7 @@ namespace DentistryLab6
                                 usl3.output();
                                 Console.ReadKey(true);
                             }
+                            /*Постфиксный оператор*/
                             else if (opmenu == '2')
                             {
                                 Console.Clear();
@@ -152,6 +157,7 @@ namespace DentistryLab6
                                 usl2.output();
                                 Console.ReadKey(true);
                             }
+                            /*Префиксный оператор*/
                             else if (opmenu == '3')
                             {
                                 Console.Clear();
@@ -175,8 +181,8 @@ namespace DentistryLab6
 
                     case 54:
                         {
+                            /*Работа со строками*/
                             Console.Clear();
-                            int comp;
                             string test, testusl = "Чистка зубов";                           
                             Usluga usl1 = new Usluga("fisrt", 2100);
                             Usluga usl2 = new Usluga("second", 1500);
@@ -222,17 +228,28 @@ namespace DentistryLab6
                             Console.ReadKey(true);
                             break;
                         }
+                    case 56:
+                        {
+                            /*Инициализация массива объектов конструктором с одним параметром*/
+                            Console.Clear();
+                            Console.Write("Массив пациентов с одним параметром (ФИО): \n");                                                     
+                            Patient[] pat_mass = new Patient[3];
 
+                            for (int i = 0; i < 3; i++)
+                            {
+                                pat_mass[i] = new Patient("Тестовый пациент №" + (i + 1));
+                            }
+
+                            for (int i = 0; i < 3; i++)
+                            {
+                                pat_mass[i].output();
+                            }
+                            Console.ReadKey(true);
+                            break;
+                        }
                 }
 
             } while (mainmenu != 27);
-
-
-
-            //Cabinet test_cab = new Cabinet();
-            //test_cab.input();
-            
-            //test_cab.output();
         }
     }
 }
