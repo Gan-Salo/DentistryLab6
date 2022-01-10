@@ -15,18 +15,7 @@ namespace DentistryLab6
             get => number;
             set
             {
-                if (value < 0)
-                {
-                    try
-                    {
-                        throw new Exception("Некорректное значение.");
-                    }
-                    catch(Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }                
-                }
-                else { number = value; }
+                number = value; 
             }
         }
         public string Otdelen
@@ -34,19 +23,7 @@ namespace DentistryLab6
             get => otdelen;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                {
-                    try
-                    {
-                        throw new Exception("Некорректное значение.");
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-
-                }
-                else { otdelen = value; }
+               otdelen = value; 
             }
         }
         public int Area
@@ -54,18 +31,7 @@ namespace DentistryLab6
             get => area;
             set
             {
-                if (value < 0)
-                {
-                    try
-                    {
-                        throw new Exception("Некорректное значение.");
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                }
-                else { area = value; }
+               area = value; 
             }
         }
         public Cabinet()    //Конструктор без параметров

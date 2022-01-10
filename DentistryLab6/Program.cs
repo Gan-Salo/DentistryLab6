@@ -39,7 +39,7 @@ namespace DentistryLab6
                             }
                             else
                             {
-                                cab.Number = -200;
+                                cab.Number = 200;
                                 cab.Otdelen = "Общее";
                                 cab.Area = 45;
                                

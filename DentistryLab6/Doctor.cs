@@ -14,21 +14,18 @@ namespace DentistryLab6
 		public string Fio
 		{
 			get => fio;
-			set
-			{
-				if (String.IsNullOrEmpty(value))
-					throw new ArgumentNullException("Вы ввели пустую строку. Проверьте введенные данные для ФИО доктора.");
-				else { fio = value; }
+			set 
+			{ 
+				fio = value; 
 			}
+			
 		}
 		public int Age
 		{
 			get => age;
 			set
 			{
-				if (value < 0 && value > 120)
-					throw new ArgumentOutOfRangeException("Ошибка. Данное значение не подходит для описания возраста доктора.");
-				else { age = value; }
+				age = value; 
 			}
 		}
 		public string Phone
@@ -36,9 +33,7 @@ namespace DentistryLab6
 			get => phone;
 			set
 			{
-				if (String.IsNullOrEmpty(value))
-					throw new ArgumentNullException("Вы ввели пустую строку. Проверьте введенные данные для номера телефона доктора.");
-				else { phone = value; }
+				phone = value; 
 			}
 		}
 
@@ -47,9 +42,7 @@ namespace DentistryLab6
 			get => kategory;
 			set
 			{
-				if (String.IsNullOrEmpty(value))
-					throw new ArgumentNullException("Вы ввели пустую строку. Проверьте введенные данные для номера категории доктора.");
-				else { kategory = value; }
+				kategory = value;
 			}
 		}
 
@@ -57,28 +50,93 @@ namespace DentistryLab6
 
 		public Doctor(string fio, int age, string phone, Dolznost dolznost, string kategory)
 		{
-			this.fio = Fio;
-			this.age = Age;
-			this.phone = Phone;
+			this.fio = fio;
+			this.age = age;
+			this.phone = phone;
 			this.dolznost = dolznost;
-			this.kategory = Kategory;
+			this.kategory = kategory;
 		}
 
 		public void input()     //Функция ввода
 		{			
-			Console.WriteLine("Введите ФИО доктора: ");
-			Fio = Console.ReadLine();
-			Console.WriteLine("Введите возраст доктора: ");
-			Age = Convert.ToInt32(Console.ReadLine());
-			Console.WriteLine("Введите телефон доктора: ");
-			Phone = Console.ReadLine();
+
+			do
+			{
+				Console.WriteLine("Введите ФИО доктора: ");
+				try
+				{
+					fio = Console.ReadLine();
+					if (String.IsNullOrEmpty(fio))
+					{
+						throw new Exception("Вы ввели пустую строку.");
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
+
+			} while (fio == "");
+
+			do
+			{
+				Console.WriteLine("Введите возраст доктора: ");
+				try
+				{
+					age = Convert.ToInt32(Console.ReadLine());
+					if (age < 0)
+					{
+						throw new Exception("Данное значение не подходит для описания номера кабинета");
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+					age = -1;
+				}
+
+			} while (age == -1);
+
+			do
+			{
+				Console.WriteLine("Введите телефон доктора: ");
+				try
+				{
+					phone = Console.ReadLine();
+					if (String.IsNullOrEmpty(phone))
+					{
+						throw new Exception("Вы ввели пустую строку.");
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
+
+			} while (phone == "");
 			dolznost.input();
-			Console.WriteLine("Введите категорию доктора: ");
-			Kategory = Console.ReadLine();
+
+			do
+			{
+				Console.WriteLine("Введите категорию доктора: ");
+				try
+				{
+					Kategory = Console.ReadLine();
+					if (String.IsNullOrEmpty(Kategory))
+					{
+						throw new Exception("Вы ввели пустую строку.");
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
+
+			} while (Kategory == "");
 		}
 		public void output()   //Функция вывода
 		{
-			Console.WriteLine("ФИО доктора: " + Fio + "; Возраст доктора: " + Age + "; Телефон доктора: " + Phone + ";\n" + "Название должности: " + dolznost.Title + "; Подразделение для должности: " + dolznost.Podrazdel + "; Категория доктора: " + Kategory);
+			Console.WriteLine("ФИО доктора: " + fio + "; Возраст доктора: " + age + "; Телефон доктора: " + phone + ";\n" + "Название должности: " + dolznost.Title + "; Подразделение для должности: " + dolznost.Podrazdel + "; Категория доктора: " + kategory);
 		}
 	}
 }

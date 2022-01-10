@@ -14,9 +14,7 @@ namespace DentistryLab6
 			get => title;
 			set 
 			{
-				if (String.IsNullOrEmpty(value))
-					throw new ArgumentNullException("Вы ввели пустую строку. Проверьте введенные данные для названия должности");
-				else { title = value; } 
+				title = value; 
 			}         
 		}
 		public string Podrazdel
@@ -24,27 +22,56 @@ namespace DentistryLab6
 			get => podrazdel;
 			set
 			{
-				if (String.IsNullOrEmpty(value))
-					throw new ArgumentNullException("Вы ввели пустую строку. Проверьте введенные данные для подразделения должности");
-				else { podrazdel = value; }
+				podrazdel = value; 
 			}
 		}		
 		public Dolznost() { }      //Конструктор без параметров
 		public Dolznost(string Title, string Podrazdel) //Конструктор с параметрами
 		{
-			this.Title = Title;
-			this.Podrazdel = Podrazdel;
+			this.Title = title;
+			this.Podrazdel = podrazdel;
 		}
 		public void input()     //Функция ввода
-		{
-			Console.WriteLine("Введите название должности: ");
-			this.Title = Console.ReadLine();
-			Console.WriteLine("Введите подразделение для должности: ");
-			this.Podrazdel = Console.ReadLine();
+		{			
+			do
+			{
+				Console.WriteLine("Введите название должности: ");
+				try
+				{
+					title = Console.ReadLine();
+					if (String.IsNullOrEmpty(title))
+					{
+						throw new Exception("Вы ввели пустую строку.");
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
+
+			} while (title == "");
+
+			do
+			{
+				Console.WriteLine("Введите подразделение для должности: ");
+				try
+				{
+					podrazdel = Console.ReadLine();
+					if (String.IsNullOrEmpty(podrazdel))
+					{
+						throw new Exception("Вы ввели пустую строку.");
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
+
+			} while (podrazdel == "");
 		}
 		public void output()   //Функция вывода
 		{
-			Console.WriteLine("Название должности: " + this.Title + "; Подразделение для должности: " + this.Podrazdel);
+			Console.WriteLine("Название должности: " + this.title + "; Подразделение для должности: " + this.podrazdel);
 		}
 	}
 }

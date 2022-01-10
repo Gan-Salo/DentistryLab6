@@ -17,18 +17,7 @@ namespace DentistryLab6
 
 			set
 			{
-				if (String.IsNullOrEmpty(value))
-				{
-					try
-					{
-						throw new Exception("Некорректное значение.");
-					}
-					catch (Exception e)
-					{
-						Console.WriteLine(e.Message);
-					}
-				}
-				else { fio = value; }
+				fio = value; 
 			}
 		}
 		public int Age
@@ -36,18 +25,7 @@ namespace DentistryLab6
 			get => age;
 			set
 			{
-				if (value < 0 && value > 120)
-				{
-					try
-					{
-						throw new Exception("Некорректное значение.");
-					}
-					catch (Exception e)
-					{
-						Console.WriteLine(e.Message);
-					}
-				}
-				else { age = value; }
+				age = value; 
 			}
 		}
 		public string Phone
@@ -55,18 +33,7 @@ namespace DentistryLab6
 			get => phone;
 			set
 			{
-				if (String.IsNullOrEmpty(value))
-				{
-					try
-					{
-						throw new Exception("Некорректное значение.");
-					}
-					catch (Exception e)
-					{
-						Console.WriteLine(e.Message);
-					}
-				}
-				else { phone = value; }
+				phone = value; 
 			}
 
 		}
@@ -99,31 +66,52 @@ namespace DentistryLab6
 					Console.WriteLine(e.Message);
 				}
 				
-			} while (fio == "") ; 
+			} while (fio == ""); 
 			
-			//if (String.IsNullOrEmpty(Fio))
-			//{
-			//	try
-			//	{
-			//		throw new Exception("Вы ввели пустую строку.");
-			//	}
-			//	catch (Exception e)
-			//	{
-			//		Console.WriteLine(e.Message);
-			//	}
-			//}
+			do
+			{
+				Console.WriteLine("Введите возраст пациента: ");
+				try
+				{
+					age = Convert.ToInt32(Console.ReadLine());
+					if (age < 0)
+					{
+						throw new Exception("Данное значение не подходит для описания номера кабинета");
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+					age = -1;
+				}
 
-			Console.WriteLine("Введите возраст пациента: ");
-			Age = Convert.ToInt32(Console.ReadLine());
-			Console.WriteLine("Введите телефон пациента: ");
-			Phone = Console.ReadLine();
+			} while (age == -1);
+
+			do
+			{
+				Console.WriteLine("Введите телефон пациента: ");
+				try
+				{
+					phone = Console.ReadLine();
+					if (String.IsNullOrEmpty(phone))
+					{
+						throw new Exception("Вы ввели пустую строку.");
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
+
+			} while (phone == "");
+
 		}
 		public void output()   //Функция вывода
 		{
 
 			if (counter >= 0)
 			{
-				Console.WriteLine("ФИО пациента: " + Fio + "; Возраст пациента: " + Age + "; Телефон пациента: " + Phone);
+				Console.WriteLine("ФИО пациента: " + fio + "; Возраст пациента: " + age + "; Телефон пациента: " + phone);
 			}
 			else
 			{

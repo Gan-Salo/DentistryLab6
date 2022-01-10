@@ -17,9 +17,7 @@ namespace DentistryLab6
             get => date;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Вы ввели пустую строку. Проверьте введенные данные для названия должности");
-                else { date = value; }
+                date = value; 
             }
         }
         public Zapis() { }    //Конструктор без параметров
@@ -37,9 +35,26 @@ namespace DentistryLab6
 			this.doctor.input();
 			this.patient.input();
 			this.cabinet.input();
-			Console.WriteLine("Введите дату приема: ");
-			this.date = Console.ReadLine();
-		}
+
+            do
+            {
+                Console.WriteLine("Введите дату приема: ");
+                try
+                {
+                    date = Console.ReadLine();
+                    if (String.IsNullOrEmpty(date))
+                    {
+                        throw new Exception("Вы ввели пустую строку.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            } while (date == "");
+
+        }
 		public void output()   //Функция вывода
 		{
             this.usluga.output();
