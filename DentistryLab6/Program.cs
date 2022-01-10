@@ -16,7 +16,7 @@ namespace DentistryLab6
             do
             {
                 Console.Clear();
-                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n5) Перегрузка оператора '+'\n\nESC - выход");
+                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n5) Перегрузка операторов\n6) Обработка строк\n\nESC - выход");
                 mainmenu = Console.ReadKey().KeyChar;
 
                 switch (mainmenu)
@@ -170,9 +170,47 @@ namespace DentistryLab6
                             }
                             
                             Console.WriteLine("\nНажмите любую клавишу для возврата в меню.");
-                            Console.ReadKey(true);                          
-                        }              
-                        break;
+                            Console.ReadKey(true);  
+                            break;                        
+                        }
+
+                    case 54:
+                        {
+                            Console.Clear();
+                            int comp;
+                            string test, testusl = "Чистка зубов";                           
+                            Usluga usl1 = new Usluga("fisrt", 2100);
+                            Usluga usl2 = new Usluga("second", 1500);
+
+                            usl1.Title = usl1.Title + " " + testusl; //Объединение строк
+                            Console.WriteLine("Объединение строк:");
+                            Console.WriteLine(usl1.Title);
+                            test = string.Concat(usl1.Title, "(ускоренная)");
+                            Console.WriteLine(test);
+
+                            Console.WriteLine("\nРазделение строк на массив подстрок:");
+                            string[] words = test.Split(new char[] { ' ' }); //Разделение строк на массив подстрок с помощью функции split
+                            foreach (string s in words)
+                            {
+                                Console.WriteLine(s);
+                            }
+
+                            Console.WriteLine("\nВставка одной строки в другую:");
+                            string substring = "(xxxd)";   //Вставка одной строки в другую с помощью функции Insert
+                            test = test.Insert(6, substring); //Первым параметром в функции Insert является индекс, по которому надо вставлять подстроку, а второй параметр - подстрока
+                            Console.WriteLine(test);
+
+                            Console.WriteLine("\nСмена регистра строки:");
+                            Console.WriteLine(test.ToUpper()); //Смена регистра строки
+
+                            Console.WriteLine("\nУдаление последних 12 символов из строки:");
+                            int ind = test.Length - 12; //Удаление последних 12 символов из строки
+                            test = test.Remove(ind);
+                            Console.WriteLine(test);
+                            Console.ReadKey(true);
+                            break;
+                        }
+
                 }
 
             } while (mainmenu != 27);
