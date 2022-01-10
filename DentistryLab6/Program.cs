@@ -7,10 +7,7 @@ namespace DentistryLab6
     {
         static void Main(string[] args)
         {
-            Console.Clear();
-
-            Patient pat = new Patient();
-            Cabinet cab = new Cabinet(12, "2323", 222);
+            Console.Clear();          
             int mainmenu, extramenu, opmenu;
 
             do
@@ -33,6 +30,7 @@ namespace DentistryLab6
                                 Console.WriteLine("\n");
                             } while (extramenu != '1' && extramenu != '2');
                             
+                            Cabinet cab = new Cabinet(12, "2323", 222);
                             if (extramenu == '1')
                             {
                                 cab.input();
@@ -123,7 +121,7 @@ namespace DentistryLab6
                             do
                             {
                                 Console.Clear();
-                                Console.WriteLine("1) Оператор сложения\n2) Префиксный оператор\n3) Постфиксный оператор\n");
+                                Console.WriteLine("1) Оператор сложения\n2) Постфиксный оператор \n3) Префиксный оператор\n");
                                 opmenu = Console.ReadKey().KeyChar;
                                 Console.WriteLine("\n");
                             } while (opmenu < '1' && opmenu > '3');
@@ -173,9 +171,7 @@ namespace DentistryLab6
                                 Console.WriteLine("\nВторая услуга после: ");
                                 usl2.output();
                                 Console.ReadKey(true);
-
-                            }
-                            
+                            }                         
                             Console.WriteLine("\nНажмите любую клавишу для возврата в меню.");
                             Console.ReadKey(true);  
                             break;                        
@@ -254,21 +250,21 @@ namespace DentistryLab6
                     case 57:
                         {
                             /*Работа с двойным массивом объектов*/
-                            Console.Clear();
-                            Console.Write("Введите количество строк массива: ");
+                            Console.Clear();                           
                             int n,k;
                             do
-                            {
+                            { 
+                                Console.Write("Введите количество строк массива: ");
                                 n = Convert.ToInt32(Console.ReadLine());
                                 if (n < 0)
                                 {
                                     Console.Write("Введено неверное значение.");
                                 }
                             } while (n < 0);
-
-                            Console.Write("Введите количество столбцов массива: ");
+                           
                             do
                             {
+                                Console.Write("Введите количество столбцов массива: ");
                                 k = Convert.ToInt32(Console.ReadLine());
                                 if (k < 0)
                                 {
