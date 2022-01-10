@@ -16,7 +16,7 @@ namespace DentistryLab6
             do
             {
                 Console.Clear();
-                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n5) Перегрузка операторов\n6) Обработка строк\n7) Статические поле и метод\n8) Массив пациентов с одним параметром\nESC - выход");
+                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n5) Перегрузка операторов\n6) Обработка строк\n7) Статические поле и метод\n8) Массив объектов с одним параметром\n9) Двойной массив объектов\nESC - выход");
                 mainmenu = Console.ReadKey().KeyChar;
 
                 switch (mainmenu)
@@ -84,12 +84,14 @@ namespace DentistryLab6
 
                             Patient[] pat_mass = new Patient[n];
 
+                            /*Ввод массива*/
                             for (int i = 0; i < n; i++)
                             {
                                 pat_mass[i] = new Patient();
                                 pat_mass[i].input();
                             }
 
+                            /*Вывод массива*/
                             for (int i = 0; i < n; i++)
                             {                              
                                 pat_mass[i].output();
@@ -234,15 +236,65 @@ namespace DentistryLab6
                             Console.Clear();
                             Console.Write("Массив пациентов с одним параметром (ФИО): \n");                                                     
                             Patient[] pat_mass = new Patient[3];
-
+                            
+                            /*Ввод массива*/
                             for (int i = 0; i < 3; i++)
                             {
                                 pat_mass[i] = new Patient("Тестовый пациент №" + (i + 1));
                             }
 
+                            /*Вывод массива*/
                             for (int i = 0; i < 3; i++)
                             {
                                 pat_mass[i].output();
+                            }
+                            Console.ReadKey(true);
+                            break;
+                        }
+                    case 57:
+                        {
+                            /*Работа с двойным массивом объектов*/
+                            Console.Clear();
+                            Console.Write("Введите количество строк массива: ");
+                            int n,k;
+                            do
+                            {
+                                n = Convert.ToInt32(Console.ReadLine());
+                                if (n < 0)
+                                {
+                                    Console.Write("Введено неверное значение.");
+                                }
+                            } while (n < 0);
+
+                            Console.Write("Введите количество столбцов массива: ");
+                            do
+                            {
+                                k = Convert.ToInt32(Console.ReadLine());
+                                if (k < 0)
+                                {
+                                    Console.Write("Введено неверное значение.");
+                                }
+                            } while (k < 0);
+
+                            Patient[,] pat_mass = new Patient[n,k];
+
+                            /*Ввод массива*/
+                            for (int i = 0; i < n; i++)
+                            {
+                                for (int j = 0; j < k; j++)
+                                {
+                                    pat_mass[i,j] = new Patient();
+                                    pat_mass[i,j].input();
+                                }
+                            }
+
+                            /*Вывод массива*/
+                            for (int i = 0; i < n; i++)
+                            {
+                                for (int j = 0; j < k; j++)
+                                {
+                                    pat_mass[i, j].output();
+                                }
                             }
                             Console.ReadKey(true);
                             break;

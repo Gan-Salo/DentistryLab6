@@ -58,11 +58,14 @@ namespace DentistryLab6
 			
 			do
 			{				
-				Console.WriteLine("Введите ФИО пациента: ");
-				fio = Console.ReadLine();
+				Console.WriteLine("Введите ФИО пациента: ");				
 				try
-				{
-					throw new Exception("Вы ввели пустую строку.");
+				{	
+					fio = Console.ReadLine();
+					if (String.IsNullOrEmpty(fio))
+					{
+						throw new Exception("Вы ввели пустую строку.");
+					}
 				}
 				catch (Exception e)
 				{
