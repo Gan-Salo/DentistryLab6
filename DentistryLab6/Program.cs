@@ -16,7 +16,7 @@ namespace DentistryLab6
             do
             {
                 Console.Clear();
-                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n5) Перегрузка операторов\n6) Обработка строк\n\nESC - выход");
+                Console.WriteLine("1) Кабинет\n2) Демонстрация свойств полей\n3) Массив объектов\n4) ref и out\n5) Перегрузка операторов\n6) Обработка строк\n7) Статические поле и метод\nESC - выход");
                 mainmenu = Console.ReadKey().KeyChar;
 
                 switch (mainmenu)
@@ -27,7 +27,7 @@ namespace DentistryLab6
                             do
                             {
                                 Console.Clear();
-                                Console.WriteLine("1) Ввод информации о кабинете\n2) Добавление кабинета с заранее введёнными данными");
+                                Console.WriteLine("1) Ввод информации о кабинете\n2) Добавление кабинета с уже введёнными данными");
                                 extramenu = Console.ReadKey().KeyChar;
                                 Console.WriteLine("\n");
                             } while (extramenu != '1' && extramenu != '2');
@@ -51,10 +51,9 @@ namespace DentistryLab6
                         }
                     case 50:
                         {
-                            Patient pat1 = new Patient();                            
-                            Patient pat2 = new Patient("dwd", 12, "rr");
-
                             Console.Clear();
+                            Patient pat1 = new Patient();                            
+                            Patient pat2 = new Patient("dwd", 12, "rr");                            
                             pat1.Fio = "Тест Семен Семенович";
                             pat1.Age = 23;
                             pat1.Phone = "89832190809";
@@ -70,17 +69,17 @@ namespace DentistryLab6
                     case 51:
                         {
                             Console.Clear();
-                            Console.Write("Введите количество коробок передач для создания массива: ");
+                            Console.Write("Введите количество пациентов для создания массива: ");
                             int n;
                             do
                             {
                                 n = Convert.ToInt32(Console.ReadLine());
                                 if (n < 0)
                                 {
-                                    Console.Write("Неверно введено значение, попробуйте еще: ");
+                                    Console.Write("Введено неверное значение.");
                                 }
                             } while (n < 0);
-                            
+
                             Patient[] pat_mass = new Patient[n];
 
                             for (int i = 0; i < n; i++)
@@ -183,7 +182,7 @@ namespace DentistryLab6
                             Usluga usl2 = new Usluga("second", 1500);
 
                             usl1.Title = usl1.Title + " " + testusl; //Объединение строк
-                            Console.WriteLine("Объединение строк:");
+                            Console.Write("Объединение строк:");
                             Console.WriteLine(usl1.Title);
                             test = string.Concat(usl1.Title, "(ускоренная)");
                             Console.WriteLine(test);
@@ -195,18 +194,31 @@ namespace DentistryLab6
                                 Console.WriteLine(s);
                             }
 
-                            Console.WriteLine("\nВставка одной строки в другую:");
+                            Console.Write("\nВставка одной строки в другую:");
                             string substring = "(xxxd)";   //Вставка одной строки в другую с помощью функции Insert
                             test = test.Insert(6, substring); //Первым параметром в функции Insert является индекс, по которому надо вставлять подстроку, а второй параметр - подстрока
                             Console.WriteLine(test);
 
-                            Console.WriteLine("\nСмена регистра строки:");
+                            Console.Write("\nСмена регистра строки:");
                             Console.WriteLine(test.ToUpper()); //Смена регистра строки
 
-                            Console.WriteLine("\nУдаление последних 12 символов из строки:");
+                            Console.Write("\nУдаление последних 12 символов из строки:");
                             int ind = test.Length - 12; //Удаление последних 12 символов из строки
                             test = test.Remove(ind);
                             Console.WriteLine(test);
+                            Console.ReadKey(true);
+                            break;
+                        }
+                    case 55:
+                        {
+                            /*Статические методы получения и установки количества пациентов*/
+                            Console.Clear();
+                            Patient testpat = new Patient();
+                            Patient.get_counter();
+                            Patient.set_counter(3);
+                            Patient.get_counter();
+                            Patient testpat2 = new Patient();
+                            Patient.get_counter();
                             Console.ReadKey(true);
                             break;
                         }

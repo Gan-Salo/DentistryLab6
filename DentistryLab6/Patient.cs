@@ -89,18 +89,17 @@ namespace DentistryLab6
 			do
 			{				
 				Console.WriteLine("Введите ФИО пациента: ");
-				Fio = Console.ReadLine();
+				fio = Console.ReadLine();
+				try
+				{
+					throw new Exception("Вы ввели пустую строку.");
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
 				
-					try
-					{
-						throw new Exception("Вы ввели пустую строку.");
-					}
-					catch (Exception e)
-					{
-						Console.WriteLine(e.Message);
-					}
-				
-			} while (String.IsNullOrEmpty(Fio));
+			} while (fio == "") ; 
 			
 			//if (String.IsNullOrEmpty(Fio))
 			//{
@@ -132,39 +131,17 @@ namespace DentistryLab6
 			}
 		}
 
-		//public void pat_massiv(int co)
-		////{
-		////    Patient[] pat_massiv1 = new Patient[kolvo + 1];
-		////    for (int i = 0; i < kolvo; i++)
-		////    {
-		////        pat_massiv1[i] = pat_massiv[i];
-		////    }
-		////    pat_massiv = pat_massiv1;
-		//}
+		/*Функция установления определённого количества пациентов*/
+		public static void set_counter(int kolvo)
+		{
+			counter = kolvo;
+		}
 
-
-		//public void addto_pmass(Patient pat1)
-		//{
-		//	if (counter > 0)
-		//	{
-		//		Array.Resize(ref pat_mass, counter + 1);
-		//	}
-		//	pat_mass[counter] = pat1;
-		//	counter++;
-
-		//}
-
-
-		//public void patmass_get()
-		//{
-		//	for (int i = 0; i < counter; i++)
-		//	{
-		//		pat_mass[i] = new Patient();
-		//		Console.WriteLine();
-		//		pat_mass[i].input();
-
-		//	}
-		//}
+		/*Функция вывода количества пациентов*/
+		public static void get_counter()
+		{
+			Console.WriteLine("\nКоличество пациентов: " + counter);
+		}
 
 
 	}
