@@ -74,6 +74,13 @@ namespace DentistryLab6
 
 			} while (podrazdel == "");
 		}
+
+		public static void get_labor()
+        {
+			Dolznost dolzn = new Dolznost();
+			dolzn.Title = "Лаборант";
+			dolzn.Podrazdel = "Мед. персонал";
+		}
 		public void output()   //Функция вывода
 		{
 			Console.WriteLine("Название должности: " + this.title + "; Подразделение для должности: " + this.podrazdel);

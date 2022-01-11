@@ -9,7 +9,7 @@ namespace DentistryLab6
 		string fio;         //ФИО
 		int age;            //Возраст
 		string phone;       //Номер телефона
-		Dolznost dolznost = new Dolznost();        //Название должности
+		protected Dolznost dolznost = new Dolznost();        //Название должности
 		string kategory;    //Категория	
 		public string Fio
 		{
