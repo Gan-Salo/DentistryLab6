@@ -25,25 +25,29 @@ namespace DentistryLab6
                             do
                             {
                                 Console.Clear();
-                                Console.WriteLine("1) Ввод информации о кабинете\n2) Добавление кабинета с уже введёнными данными");
+                                Console.WriteLine("1) Ввод информации о кабинете\n2) Работа конструкторов");
                                 extramenu = Console.ReadKey().KeyChar;
                                 Console.WriteLine("\n");
                             } while (extramenu != '1' && extramenu != '2');
-                            
+
                             Cabinet cab = new Cabinet(12, "2323", 222);
+                            Cabinet cab1 = new Cabinet(12, "2323", 222);
+                            Cabinet cab2 = new Cabinet(124);
+                            Cabinet cab3 = new Cabinet();
+
                             if (extramenu == '1')
                             {
-                                cab.input();
-                                Console.Clear();
+                                cab.input();                                
+                                cab.output(); 
                             }
                             else
-                            {
-                                cab.Number = 200;
-                                cab.Otdelen = "Общее";
-                                cab.Area = 45;
-                               
+                            {                               
+                                cab1.output();
+                                cab2.output();
+                                cab3.output();
+
                             }
-                            cab.output();                            
+                                                       
                             Console.WriteLine("\nНажмите любую клавишу для возврата в меню.");
                             Console.ReadKey(true);
                             break;
@@ -183,7 +187,6 @@ namespace DentistryLab6
                             Console.Clear();
                             string test, testusl = "Чистка зубов";                           
                             Usluga usl1 = new Usluga("fisrt", 2100);
-                            Usluga usl2 = new Usluga("second", 1500);
 
                             usl1.Title = usl1.Title + " " + testusl; //Объединение строк
                             Console.Write("Объединение строк:");
@@ -218,10 +221,13 @@ namespace DentistryLab6
                             /*Статические методы получения и установки количества пациентов*/
                             Console.Clear();
                             Patient testpat = new Patient();
+                            Console.Write("\nКоличество пациентов после добавления одного объекта: ");
                             Patient.get_counter();
+                            Console.Write("\nКоличество пациентов после установки количества пациентов на 3: ");
                             Patient.set_counter(3);
                             Patient.get_counter();
                             Patient testpat2 = new Patient();
+                            Console.Write("\nКоличество пациентов после добавления ещё одного объекта: ");
                             Patient.get_counter();
                             Console.ReadKey(true);
                             break;

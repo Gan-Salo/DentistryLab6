@@ -59,7 +59,7 @@ namespace DentistryLab6
                 try
                 {
                     number = Convert.ToInt32(Console.ReadLine());
-                    if (number < 0)
+                    if (number <= 0)
                     {
                         throw new Exception("Данное значение не подходит для описания номера кабинета");
                     }
@@ -96,7 +96,7 @@ namespace DentistryLab6
                 try
                 {
                     area = Convert.ToInt32(Console.ReadLine());
-                    if (area < 0)
+                    if (area <= 0)
                     {
                         throw new Exception("Данное значение не подходит для описания площади кабинета");
                     }

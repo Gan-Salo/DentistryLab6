@@ -9,7 +9,7 @@ namespace DentistryLab6
 		string fio;     //ФИО
 		int age;        //Возраст
 		string phone;   //Номер телефона
-		static int counter = 0;
+		static int counter = 0; //Количество пациентов
 
 	public string Fio
 		{
@@ -110,6 +110,7 @@ namespace DentistryLab6
 				}
 
 			} while (phone == "");
+			counter++;
 
 		}
 		public void output()   //Функция вывода
@@ -134,7 +135,7 @@ namespace DentistryLab6
 		/*Функция вывода количества пациентов*/
 		public static void get_counter()
 		{
-			Console.WriteLine("\nКоличество пациентов: " + counter);
+			Console.WriteLine(counter);
 		}
 
 
