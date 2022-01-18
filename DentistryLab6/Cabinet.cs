@@ -112,8 +112,17 @@ namespace DentistryLab6
         public void output()   //Функция вывода
         {           
             Console.WriteLine("Номер кабинета: " + number + "; Отделение: " + otdelen + "; Площадь кабинета: " + area);
-        }  
-        
+        }
+        public void Display()
+        {
+            Console.Write($"{number}, {otdelen}, {area} ");
+        }
+
+        public override String ToString()   //Функция вывода
+        {
+             return number + ";" + otdelen + ";" + area;
+        }
+
         public void fullarea(out int Areas)
         {         
             Areas = 0;

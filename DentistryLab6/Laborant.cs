@@ -6,7 +6,7 @@ namespace DentistryLab6
 {
     class Laborant : Doctor
     {
-        public int kurs;
+        private int kurs;
         public void kurs_set(int kurs1)
         {            
             this.kurs = kurs1;
@@ -16,15 +16,34 @@ namespace DentistryLab6
         {
             Console.WriteLine("\nУчебный курс лаборанта: " + this.kurs);
         }
-        
-        public Laborant(string fio, int age, string phone, int kurs)
+
+        public Laborant()
         {
-            Fio = fio;
-            Age = age;
-            Phone = phone;
-            dolznost.Title = "Лаборант";
-            dolznost.Podrazdel = "Мед. персонал";
-            Kategory = "-";
+            
+        }
+
+        public Laborant(string fio, int kurs) : base(fio)
+        {         
+            this.kurs = kurs;
+        }
+
+        public Laborant(string fio, int age, string phone, Dolznost dolznost, string kategory, int kurs) : base(fio, age, phone, dolznost, kategory)
+        {            
+            this.kurs = kurs;
+        }
+
+        public void Init(string fio, int age, string phone, Dolznost dolznost, string kategory)
+        {
+            this.Fio = fio;
+            this.Age = age;
+            this.Phone = phone;
+            this.dolznost = dolznost;
+            this.Kategory = kategory;           
+        }
+
+        public void Init(string fio, int age, string phone, Dolznost dolznost, string kategory, int kurs)
+        {
+            this.Init(fio, age, phone, dolznost, kategory);
             this.kurs = kurs;
         }
 

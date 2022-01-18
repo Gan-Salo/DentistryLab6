@@ -138,6 +138,5 @@ namespace DentistryLab6
 			Console.WriteLine(counter);
 		}
 
-
 	}
 }

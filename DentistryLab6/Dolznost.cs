@@ -27,11 +27,11 @@ namespace DentistryLab6
 		}		
 		public Dolznost() { }      //Конструктор без параметров
 
-		public Dolznost(string Title) //Конструктор с одним параметром
+		public Dolznost(string title) //Конструктор с одним параметром
         {
 			this.Title = title;
 		}
-		public Dolznost(string Title, string Podrazdel) //Конструктор с параметрами
+		public Dolznost(string title, string podrazdel) //Конструктор с параметрами
 		{
 			this.Title = title;
 			this.Podrazdel = podrazdel;
