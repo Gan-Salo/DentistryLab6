@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DentistryLab6
 {
-	class Patient
+	class Patient : PatDisplay, ICloneable
 	{
 		string fio;     //ФИО
 		int age;        //Возраст
@@ -53,6 +53,12 @@ namespace DentistryLab6
 			this.phone = phone;
 			counter++;
 		}
+
+		public object Clone()
+		{
+			return new Patient(fio, age, phone);
+		}
+
 		public void input()     //Функция ввода
 		{
 			

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DentistryLab6
 {
-    class Doctor  
+    class Doctor : IComparable  
     {
 		string fio;         //ФИО
 		int age;            //Возраст
@@ -62,6 +62,16 @@ namespace DentistryLab6
 			this.kategory = kategory;
 		}
 
+
+		public int CompareTo(Object obj)
+		{
+			Doctor pat = (Doctor)obj;
+
+			if (age <= pat.age)
+				return -1;
+			else
+				return 1;
+		}
 		public void input()     //Функция ввода
 		{			
 

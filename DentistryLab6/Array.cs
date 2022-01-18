@@ -4,16 +4,16 @@ using System.Text;
 
 namespace DentistryLab6
 {
-    class Array<P> where P : Patient
+    class Array<P> where P : Doctor
     {
         public P[] data;
         public int size;
 
 
-        public Array(P[] pat)
+        public Array(P[] doc)
         {
-            data = pat;
-            size = pat.Length;
+            data = doc;
+            size = doc.Length;
         }
 
         public void input()

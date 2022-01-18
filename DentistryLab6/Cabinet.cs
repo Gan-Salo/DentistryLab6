@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace DentistryLab6
-{
+{   
     class Cabinet
     {
         int number;     //Номер кабинета
