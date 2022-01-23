@@ -7,6 +7,6 @@ namespace DentistryLab6
     abstract class Person
     {
         public abstract void GoToClinic();
-
+    }
         
 }

@@ -157,14 +157,16 @@ namespace DentistryLab6
                         {
                             /*Работа с клонированием*/
                             Console.Clear();
-                            Patient pat1 = new Patient("Овсянников Г.В.", 19, "+213091829038");
-                            Patient pat2 = new Patient();
-                            pat1.output();
-                            pat2.output();
-                            pat2 = (Patient)pat1.Clone();
-
-                            pat1.output();
-                            pat2.output();
+                            Dolznost dolz = new Dolznost("Стоматолог", "Стандарт");
+                            Doctor doc1 = new Doctor("Овсянников Г.В.", 19, "+213091829038", dolz, "Высшая");
+                            Doctor doc2 = new Doctor();
+                            doc1.output();
+                            doc2.output();
+                            doc2 = (Doctor)doc1.Clone();
+                            doc2.dolznost.Title = "Хирург";
+                            Console.WriteLine("\nПосле клонирования: ");
+                            doc1.output();
+                            doc2.output();
                             Console.ReadKey(true);
                             break;
                         }

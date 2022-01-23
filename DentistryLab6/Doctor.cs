@@ -4,12 +4,12 @@ using System.Text;
 
 namespace DentistryLab6
 {
-    class Doctor : Person, IComparable  
-    {
+    class Doctor : Person, IComparable, ICloneable
+	{
 		protected string fio;         //ФИО
 		protected int age;            //Возраст
 		protected string phone;       //Номер телефона
-		protected Dolznost dolznost = new Dolznost();        //Название должности
+		public Dolznost dolznost = new Dolznost();        //Название должности
 		protected string kategory;    //Категория	
 		public string Fio
 		{
@@ -62,6 +62,15 @@ namespace DentistryLab6
 			this.kategory = kategory;
 		}
 
+		//public object Clone()
+		//{
+		//	return new Doctor(fio, age, phone, dolznost, kategory);
+		//}
+
+		public object Clone()
+		{
+			return new Doctor(fio, age, phone, new Dolznost(dolznost.Title, dolznost.Podrazdel), kategory);
+		}
 
 		public int CompareTo(Object obj)
 		{
