@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DentistryLab6
 {
-	class Patient : PatDisplay, ICloneable
+	class Patient : Person, PatDisplay, ICloneable
 	{
 		string fio;     //ФИО
 		int age;        //Возраст
@@ -142,6 +142,12 @@ namespace DentistryLab6
 		public static void get_counter()
 		{
 			Console.WriteLine(counter);
+		}
+
+		public override void GoToClinic()
+		{
+			Console.WriteLine($"{fio} ходит в поликлинику, потому ему нужно лечить зубы.");
+
 		}
 
 	}

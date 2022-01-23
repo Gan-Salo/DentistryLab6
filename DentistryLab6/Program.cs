@@ -15,7 +15,7 @@ namespace DentistryLab6
             do
             {
                 Console.Clear();
-                Console.WriteLine("1) Лаборант\n2)Поле protected \n3)ToString и Display \n4)Обобщённый класс \n5)Работа с интерфейсом \n6)Коллекция и сортировка \n7)Клонирование\n\nESC - выход");
+                Console.WriteLine("1)Лаборант \n2)Поле protected \n3)ToString и Display \n4)Обобщённый класс \n5)Работа с интерфейсом \n6)Коллекция и сортировка \n7)Клонирование\n\nESC - выход");
                 mainmenu = Console.ReadKey().KeyChar;
 
                 switch (mainmenu)
@@ -39,6 +39,7 @@ namespace DentistryLab6
                                 doc1.input();
                                 doc1.output();
                                 
+                                /*Пример полиморфизма: методы input и output для дочернего и родительского класса различаются с учетом доп. данного в классе 'Laborant'*/
                                 Laborant lab1 = new Laborant();
                                 lab1.input();
                                 lab1.output();
@@ -82,7 +83,7 @@ namespace DentistryLab6
                         }
                     case 51:
                         {
-                            /*Работа с Display и ToString*/
+                            /*Работа с Display и ToString (пример наследования от класса Object)*/
                             Console.Clear();
                             Cabinet cab = new Cabinet();
                             cab.input();
@@ -95,21 +96,12 @@ namespace DentistryLab6
                         }
                     case 52:
                         {
-                            /*Работа с обобщённым классом*/
-                            Console.Clear();
+                            /*Работа с обобщённым классом (изменяет свое поведение в зависимости от приписываемого им типа. Этот тип указывается в квадратных скобках[] сразу после имени класса)*/
+                            Console.Clear();  
                             Cabin<string> cab = new Cabin<string>("d123");
                             Cabin<int> cab2 = new Cabin<int>(345);
                             cab.Display();
                             cab2.Display();
-
-                            //Doctor[] doc = new Doctor[3];
-                            //for (int i = 0; i < 3; i++)
-                            //{
-                            //    doc[i] = new Doctor();
-                            //}
-                            //Array<Doctor> docs = new Array<Doctor>(doc);
-                            //docs.input();
-                            //docs.output();
 
                             Console.WriteLine("\nНажмите любую клавишу для возврата в меню.");
                             Console.ReadKey(true);
@@ -117,7 +109,7 @@ namespace DentistryLab6
                         }
                     case 53:
                         {
-                            /*Работа с интерфейсом*/
+                            /*Работа с интерфейсом (класс может наследоваться от нескольких интерфейсов - отличие от абстрактного класса; интерфейс позволяет */
                             Console.Clear();
                             PatDisplay pat = new Patient("Овсянников Г.В.", 19, "+213091829038");
                             pat.interf();
@@ -178,7 +170,14 @@ namespace DentistryLab6
                         }
                     case 56:
                         {
-                            
+                            /*Демонстрация работы абстрактного класса и метода */
+                            Console.Clear();
+                            Dolznost dolz = new Dolznost("Стоматолог", "Стандарт");
+                            Doctor doc = new Doctor("Овсянников Г.В.", 19, "+213091829038", dolz, "Высшая");
+                            Patient pat1 = new Patient("Локеев Г.В.", 17, "+213091829038");
+                            doc.GoToClinic();
+                            pat1.GoToClinic();
+                            Console.ReadKey(true);
                             break;
                         }
                     case 57:

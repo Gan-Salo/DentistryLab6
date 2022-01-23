@@ -4,13 +4,13 @@ using System.Text;
 
 namespace DentistryLab6
 {
-    class Doctor : IComparable  
+    class Doctor : Person, IComparable  
     {
-		string fio;         //ФИО
-		int age;            //Возраст
-		string phone;       //Номер телефона
+		protected string fio;         //ФИО
+		protected int age;            //Возраст
+		protected string phone;       //Номер телефона
 		protected Dolznost dolznost = new Dolznost();        //Название должности
-		string kategory;    //Категория	
+		protected string kategory;    //Категория	
 		public string Fio
 		{
 			get => fio;
@@ -101,7 +101,7 @@ namespace DentistryLab6
 					age = Convert.ToInt32(Console.ReadLine());
 					if (age < 0)
 					{
-						throw new Exception("Данное значение не подходит для описания номера кабинета");
+						throw new Exception("Данное значение не подходит для описания возраста доктора.");
 					}
 				}
 				catch (Exception e)
@@ -153,5 +153,12 @@ namespace DentistryLab6
 		{
 			Console.WriteLine("ФИО доктора: " + fio + "; Возраст доктора: " + age + "; Телефон доктора: " + phone + ";\n" + "Название должности: " + dolznost.Title + "; Подразделение для должности: " + dolznost.Podrazdel + "; Категория доктора: " + kategory);
 		}
+
+		public override void GoToClinic()
+        {
+			Console.WriteLine($"{fio} ходит в поликлинику, потому что он здесь работает.");
+
+		}
+
 	}
 }
