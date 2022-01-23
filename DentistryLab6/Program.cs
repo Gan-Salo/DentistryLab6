@@ -104,13 +104,15 @@ namespace DentistryLab6
 
                     case 52:
                         {
+                            /*ref и out*/
                             Console.Clear();
                             int Areas;
                             Cabinet cab3 = new Cabinet(203, "dd", 21);                            
                             cab3.fullarea(out Areas);                          
                             Console.WriteLine("\nОбщая площадь (out): " + Areas);
 
-                            int Costs = 0;
+                            /*ref - */
+                            int Costs = 13;
                             Usluga usl3 = new Usluga("dsd", 210);                           
                             usl3.fullcost(ref Costs);
                             Console.WriteLine("\nОбщая стоимость (ref): " + Costs);
@@ -219,9 +221,11 @@ namespace DentistryLab6
                     case 55:
                         {
                             /*Статические методы получения и установки количества пациентов*/
+                            /*Статическое поле создается в одном экземпляре независимо от объектов класса, будет существовать до выхода из функции main*/
                             Console.Clear();
                             Patient testpat = new Patient();
                             Console.Write("\nКоличество пациентов после добавления одного объекта: ");
+                            /*Статические методы хранят состояние всего класса, а не конкретного объекта*/
                             Patient.get_counter();
                             Console.Write("\nКоличество пациентов после установки количества пациентов на 3: ");
                             Patient.set_counter(3);
@@ -255,7 +259,7 @@ namespace DentistryLab6
                         }
                     case 57:
                         {
-                            /*Работа с двойным массивом объектов*/
+                            /*Работа с двойным массивом объектов и массивом массивов объектов*/
                             Console.Clear();                           
                             int n,k;
                             do
@@ -278,19 +282,21 @@ namespace DentistryLab6
                                 }
                             } while (k < 0);
 
-                            Patient[,] pat_mass = new Patient[n,k];
 
+                            /*Двумерный массив - элементы явл. значениями типа Patient. Кол-во элементов внутри строго задано, размерность массивов всегда одинакова*/
+                            Patient[,] pat_mass = new Patient[n,k];
+                            
                             /*Ввод массива*/
                             for (int i = 0; i < n; i++)
                             {
                                 for (int j = 0; j < k; j++)
                                 {
-                                    pat_mass[i,j] = new Patient();
-                                    pat_mass[i,j].input();
+                                    pat_mass[i, j] = new Patient();
+                                    pat_mass[i, j].input();
                                 }
                             }
 
-                            /*Вывод массива*/
+                            /*Вывод массива - элементы явл. ссылками на массив типа Patient. Внутренние размерности не заданы, массивы внутри могут быть неравномерными и включать разное кол-во объектов*/
                             for (int i = 0; i < n; i++)
                             {
                                 for (int j = 0; j < k; j++)
@@ -298,6 +304,34 @@ namespace DentistryLab6
                                     pat_mass[i, j].output();
                                 }
                             }
+                            
+                            /*Массив массивов*/
+                            Patient[][] pat_mass2 = new Patient[3][];
+                            pat_mass2[0] = new Patient[3];
+                            
+                            for (int j = 0; j < 3; j++)
+                            {                              
+                                Console.Write("Строка №1,  Столбец: " + (j + 1) + "\n");
+                                pat_mass2[0][j] = new Patient("Тестовый пациент", 21, "+123912312");                               
+                            }
+                            Patient.output_mass(pat_mass2[0], 3);
+
+                            pat_mass2[1] = new Patient[1];
+                            for (int j = 0; j < 1; j++)
+                            {
+                                Console.Write("Строка №2,  Столбец: " + (j + 1) + "\n");
+                                pat_mass2[1][j] = new Patient("Тестовый пациент", 21, "+123912312");
+                            }
+                            Patient.output_mass(pat_mass2[1], 1);
+
+                            pat_mass2[2] = new Patient[2];
+                            for (int j = 0; j < 2; j++)
+                            {
+                                Console.Write("Строка №3,  Столбец: " + (j + 1) + "\n");
+                                pat_mass2[2][j] = new Patient("Тестовый пациент", 21, "+123912312");
+                            }              
+                            Patient.output_mass(pat_mass2[2], 2);
+
                             Console.ReadKey(true);
                             break;
                         }

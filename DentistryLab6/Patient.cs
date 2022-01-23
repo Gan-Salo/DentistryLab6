@@ -53,6 +53,7 @@ namespace DentistryLab6
 			this.phone = phone;
 			counter++;
 		}
+
 		public void input()     //Функция ввода
 		{
 			
@@ -124,6 +125,17 @@ namespace DentistryLab6
 			{
 				Console.WriteLine("Информация о коробке передач отсутствует");
 			}
+		}
+
+		public static void output_mass(Patient[] pat, int count )   //Функция вывода
+		{
+
+			
+			for (int i = 0; i < count; i++)
+			{
+				Console.WriteLine("ФИО пациента: " + pat[i].fio + "; Возраст пациента: " + pat[i].age + "; Телефон пациента: " + pat[i].phone);
+			}
+
 		}
 
 		/*Функция установления определённого количества пациентов*/
