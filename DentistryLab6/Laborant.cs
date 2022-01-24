@@ -150,12 +150,12 @@ namespace DentistryLab6
 			} while (kurs == -1);
 		}
 
-		new  public void output()   //Функция вывода
+		new  public void output()   //Функция вывода (new перекрывает метод из родительского класса)
 		{
 			Console.WriteLine("\nФИО доктора: " + fio + "; Возраст доктора: " + age + "; Телефон доктора: " + phone + ";\n" + "Название должности: " + dolznost.Title + "; Подразделение для должности: " + dolznost.Podrazdel + "; Категория доктора: " + kategory + "; Курс лаборанта: " + kurs);
 		}
 
-		override public string ToString()   //Функция вывода
+		override public string ToString()   //Функция вывода (override расширяет родительский метод дочерним)
 		{
 			return "\nФИО доктора: " + fio + "; Возраст доктора: " + age + "; Телефон доктора: " + phone + ";\n" + "Название должности: " + dolznost.Title + "; Подразделение для должности: " + dolznost.Podrazdel + "; Категория доктора: " + kategory + "; Курс лаборанта: " + kurs;
 		}

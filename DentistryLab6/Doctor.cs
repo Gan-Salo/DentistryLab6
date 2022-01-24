@@ -55,18 +55,20 @@ namespace DentistryLab6
 
 		public Doctor(string fio, int age, string phone, Dolznost dolznost, string kategory)
 		{
-			this.fio = fio;
-			this.age = age;
-			this.phone = phone;
+			this.Fio = fio;
+			this.Age = age;
+			this.Phone = phone;
 			this.dolznost = dolznost;
-			this.kategory = kategory;
+			this.Kategory = kategory;
 		}
 
+		//Мелкое копирование
 		//public object Clone()
 		//{
 		//	return new Doctor(fio, age, phone, dolznost, kategory);
 		//}
 
+		//Глубокое копирование
 		public object Clone()
 		{
 			return new Doctor(fio, age, phone, new Dolznost(dolznost.Title, dolznost.Podrazdel), kategory);

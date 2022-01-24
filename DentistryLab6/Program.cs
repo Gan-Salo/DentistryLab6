@@ -15,7 +15,7 @@ namespace DentistryLab6
             do
             {
                 Console.Clear();
-                Console.WriteLine("1)Лаборант \n2)Поле protected \n3)ToString и Display \n4)Обобщённый класс \n5)Работа с интерфейсом \n6)Коллекция и сортировка \n7)Клонирование\n\nESC - выход");
+                Console.WriteLine("1)Лаборант \n2)Поле protected \n3)ToString и Display \n4)Обобщённый класс \n5)Работа с интерфейсом \n6)Коллекция и сортировка \n7)Клонирование\n 8) Абстрактный класс \n\nESC - выход");
                 mainmenu = Console.ReadKey().KeyChar;
 
                 switch (mainmenu)
@@ -97,6 +97,7 @@ namespace DentistryLab6
                     case 52:
                         {
                             /*Работа с обобщённым классом (изменяет свое поведение в зависимости от приписываемого им типа. Этот тип указывается в квадратных скобках[] сразу после имени класса)*/
+                            /*Шаблон класса - для работы с несколькими типами данных. Заменяет тип параметров шаблона класса на передаваемый параметр (int или string в этом случае)*/
                             Console.Clear();  
                             Cabin<string> cab = new Cabin<string>("d123");
                             Cabin<int> cab2 = new Cabin<int>(345);
@@ -124,7 +125,7 @@ namespace DentistryLab6
                             /*Работа с коллекциями и сортировкой*/
                             Console.Clear();
                             Dolznost dolz = new Dolznost("Стоматолог", "Стандарт");
-                            ArrayList docs = new ArrayList();
+                            ArrayList docs = new ArrayList(); //Обобщённый класс, позволяющий использовать массив объектов типа Doctor
 
                             Doctor doc = new Doctor("Овсянников Г.В.", 19, "+213091829038", dolz, "Высшая");
                             Doctor doc2 = new Doctor("dwwd", 24, "+83742384293", dolz, "Высшая");                         
@@ -143,7 +144,7 @@ namespace DentistryLab6
 
                             Console.Write("\nКоллекция после сортировки:\n\n");
                             docs.Sort();
-                            foreach (Doctor dc in docs)
+                            foreach (Doctor dc in docs) //Циклическое обрадщение к членам коллекции 
                             {
                                 dc.output();
                                 Console.Write("\n");
@@ -155,7 +156,8 @@ namespace DentistryLab6
                         }
                     case 55:
                         {
-                            /*Работа с клонированием*/
+                            /*Работа с клонированием - в случае мелкого копирования и копия и изначальный объект указывают на один и тот же объект класса dolznost
+                            , а в случае глубокого копирования под клон создается новый объект класса dolznost. Глубокое копированаие работает не только для примитивных свойств*/
                             Console.Clear();
                             Dolznost dolz = new Dolznost("Стоматолог", "Стандарт");
                             Doctor doc1 = new Doctor("Овсянников Г.В.", 19, "+213091829038", dolz, "Высшая");
